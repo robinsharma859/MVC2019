@@ -1,0 +1,32 @@
+﻿@using MVC2019.Models
+
+@using MVC2019.Enums
+@model IEnumerable<MVC2019.Category>
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<h2>List of Categories</h2>
+<html>
+<body>
+    <div>
+        <ul>
+            @foreach (Category category in Model.ToList().Distinct())
+            {
+                <li> @Html.ActionLink(category.CategoryName, "ProductDetails", "Product", new { categoryID = category.CategoryID }, null)</li>
+            }
+        </ul>
+
+    </div>
+    <br />
+    <br />
+    <div>
+        
+        @Html.DropDownList("Product_Category", new SelectList(Enum.GetValues(typeof(ProductCategory)), "Select Category"))
+
+    </div>
+</body>
+
+</html>
+

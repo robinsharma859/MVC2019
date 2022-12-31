@@ -1,0 +1,63 @@
+﻿@model   MVC2019.Models.Employee
+@{
+    ViewBag.Title = "GetEmployeeDetails";
+    var @data = ViewBag.Message;
+}
+
+<h2>GetEmployeeDetails</h2>
+
+<html>
+
+<body class="media-body">
+    <div class="alert-info">
+    <header>
+        @{
+            @data;
+         }
+    </header>
+    </div>
+    <table class="table-bordered table-condensed">
+        <tbody>
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Employee Designation</th>
+                <th>Employee Salary</th>
+            </tr>
+            <tr>
+                <td>@Model.EmpID</td>
+                <td>@Model.EmpName</td>
+                <td>@Model.EmpDesignations</td>
+                <td>@Model.Salary</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <div>
+        <br />
+
+        <table class="table-bordered table-condensed" style="margin:50;">
+            <tbody>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Department</th>
+                    <th>Location</th>
+                </tr>
+                <tr>
+                    <td>@Model.EmpID</td>
+                    <td>@Model.EmployeeDepartment.Department</td>
+                    <td>@Model.EmployeeDepartment.Address</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+</body>
+
+</html>

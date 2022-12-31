@@ -1,0 +1,73 @@
+﻿@model IEnumerable<MVC2019.Customer>
+@{
+    ViewBag.Title = "CustomerInfo";
+    var records = ViewBag.Customer;
+}
+
+<h2>CustomerInfo</h2>
+
+<html>
+<body>
+
+    <table class="table-bordered table" id="tbl1" style="color:black " align="center">
+        <tbody class="alert-info">
+            <tr>
+                <th>Customer ID</th>
+                <th>First Name</th>
+                <th>Last tName</th>
+                <th>Age</th>
+                <th>Country</th>
+            </tr>
+
+            @*@foreach (Customer item in Model)
+        {
+            <tr>
+                <td>@item.CustomerID</td>
+                <td>@item.First_Name</td>
+                <td>@item.Last_Name</td>
+                <td>@item.Age</td>
+                <td>@item.Country</td>
+            </tr>
+        }*@
+
+            @foreach (Customer item in records)
+            {
+                <tr>
+                    <td>@item.CustomerID</td>
+                    <td>@item.First_Name</td>
+                    <td>@item.Last_Name</td>
+                    <td>@item.Age</td>
+                    <td>@item.Country</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <br />
+
+    <br />
+    @*<table class="table-condensed" style="background:border-box">
+            <tbody class="table-bordered text-capitalize">
+                <tr>
+                    <th>CustomerID</th>
+                    <th>FirstName</th>
+                    <th>LasttName</th>
+                    <th>Age</th>
+                    <th>Country</th>
+                </tr>
+                <tr>
+
+                    <td>@Html.DisplayNameFor(x => x.CustomerID)</td>
+                    <td>@Html.DisplayNameFor(x => x.First_Name)</td>
+                    <td>@Html.DisplayNameFor(x => x.Last_Name)</td>
+                    <td>@Html.DisplayNameFor(x => x.Age)</td>
+                    <td>@Html.DisplayNameFor(x => x.Country)</td>
+
+                </tr>
+            </tbody>
+        </table>*@
+
+</body>
+</html>
+
+

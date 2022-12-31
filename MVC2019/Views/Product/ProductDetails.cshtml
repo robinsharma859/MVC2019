@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "ProductDetails";
+    var productDetails = ViewBag.ProductData;
+}
+
+<h2 class="panel-heading" style="font-size:large">Product Details List</h2>
+<div>
+    <table class="table-bordered text-capitalize table-condensed table-striped">
+        <tbody>
+            <tr>
+                <th>Serial NO.</th>
+                <th>Product Name</th>
+                <th>Amount</th>
+                <th>Specification</th>
+                <th>Order</th>
+            </tr>
+            @{
+
+                var number = productDetails.Count;
+            }
+            @for (int i = 0; i < number; i++)
+            {
+        <tr>
+            @if (i == 0)
+            {
+                i = 1;
+                <td>@Html.DisplayFor(x => i)</td>
+                i = 0;
+            }
+            else
+            {
+                i = i + 1;
+                <td>@Html.DisplayFor(x => i)</td>
+                i = i -1;
+            }
+            <td>@productDetails[i].ProductName</td>
+            <td>@productDetails[i].Amount</td>
+            <td>@productDetails[i].Specification</td>
+            @*<td>@Html.ActionLink("Buy", "Order", "Cart", new { prouductID = item.ProductID })</td>*@
+            <td>@Html.ActionLink("Buy", "ProductDetails", "Product")</td>
+        </tr>
+
+            }
+           
+        </tbody>
+        
+    </table>
+  <br />
+    <div style="font-display:block" class="divider">
+        @Html.ActionLink("back to List", "Index", "Categories")
+    </div>
+</div>
+

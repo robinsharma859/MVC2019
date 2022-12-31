@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b5441199460d4e97891971e9ff50cd96" Name="Diagram1">
+        <EntityTypeShape EntityType="DemoModel.Customer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Order" Width="1.5" PointX="3.875" PointY="0.875" />
+        <AssociationConnector Association="DemoModel.FK_Orders_Orders" />
+        <EntityTypeShape EntityType="DemoModel.Category" Width="1.5" PointX="4.625" PointY="3.375" />
+        <EntityTypeShape EntityType="DemoModel.Product" Width="1.5" PointX="0.75" PointY="3.75" />
+        <AssociationConnector Association="DemoModel.FK_Products_Products" />
+        <AssociationConnector Association="DemoModel.FK_Categories_Categories" />
+        <AssociationConnector Association="DemoModel.FK_CategoryID" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
