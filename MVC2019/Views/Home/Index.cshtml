@@ -24,7 +24,7 @@
         <h2>Get more libraries</h2>
         <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        <table class="table-bordered text-capitalize table-condensed table-striped">
+        <table class="table-bordered text-capitalize table-condensed table-striped table-striped" >
             <tbody>
                 <tr>
                     <th>Name</th>
@@ -35,18 +35,19 @@
                     <th>Phone</th>
                     <th>Gender</th>
                 </tr>
-                s
+                
                 @foreach (UserRegistration item in recods)
                 {
-                    <tr>
-                        <td>@item.Name</td>
-                        <td>@item.Address</td>
-                        <td>@item.Country</td>
-                        <td>@item.PinCode</td>
-                        <td>@item.Age</td>
-                        <td>@item.Phone</td>
-                        <td>@item.Gender</td>
-                    </tr>
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Address</td>
+                <td>@item.Country</td>
+                <td>@item.PinCode</td>
+                <td>@item.Age</td>
+                <td>@item.Phone</td>
+                <td>@item.Gender</td>
+                <td>@Html.ActionLink("Edit Info", "EditDetails", "Home",new {userRegistrationId = item.RegistrationID},null)</td>
+            </tr>
                 }
 
             </tbody>

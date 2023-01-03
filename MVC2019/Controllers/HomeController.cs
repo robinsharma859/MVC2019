@@ -6,9 +6,11 @@ using System.Web.Mvc;
 using BussinessLayer;
 namespace MVC2019.Controllers
 {
+    [RoutePrefix("Home")]
     public class HomeController : Controller
     {
         private  UserRegistrationBussinessService userRegistrationBussinessService = null;
+        Dictionary<string, object> userRecords = null;
         public HomeController()
         {
             userRegistrationBussinessService = new UserRegistrationBussinessService();
@@ -77,8 +79,47 @@ namespace MVC2019.Controllers
                 //RedirectToAction("Index");
             }
             userRegistrationBussinessService.AddUserRegistration("spEmployeee", true, userRecords);
-            RedirectToAction("Index", "Home");
-            return View();
+            return RedirectToAction("Index", "Home");
+            
+        }
+       // [ActionName("GetEditDetails")]
+        [Route("EditDetails/{userRegistrationId}")]
+        [HttpGet]
+        public ActionResult EditDetails(int userRegistrationId)
+        {
+            ViewBag.Message = "Edit User Registration Details";
+            IEnumerable<UserRegistration> data = userRegistrationBussinessService.UserRegistationListWherCondition(userRegistrationId);
+            UserRegistration userRegistration = new UserRegistration();
+            userRegistration = data.FirstOrDefault();
+            return View(userRegistration);
+
+        }
+
+       [ActionName("EditDetails")]
+       [HttpPost]
+        //[Route("EditDetails")]
+        public ActionResult EditDetails(UserRegistration registration)
+        {
+            if (ModelState.IsValid)
+            {
+                userRecords = new Dictionary<string, object>();
+                UserRegistration userRegistration = new UserRegistration();
+
+                UpdateModel<UserRegistration>(registration);
+
+                userRecords.Add("@Name", registration.Name);
+                userRecords.Add("@Address", registration.Address);
+                userRecords.Add("@Country", registration.Country);
+                userRecords.Add("@PinCode", registration.PinCode);
+                userRecords.Add("@Age", registration.Age);
+                userRecords.Add("@Phone", registration.Phone);
+                userRecords.Add("@Gender", registration.Gender);
+                userRecords.Add("@@UserRegistrationId", registration.RegistrationID);
+                userRegistrationBussinessService.AddUserRegistration("spUpdateEmployee", true, userRecords);
+               
+            }
+            return RedirectToAction("Index", "Home");
+
         }
     }
 }
